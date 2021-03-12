@@ -179,3 +179,84 @@ else:
 	figMA.update_yaxes(tickprefix="$")
 
 	st.plotly_chart(figMA, use_container_width=True)
+
+	# Build MACD indicator
+	st.subheader('Moving average Convergence (MACD)')
+	numYearMACD = st.number_input('Insert peroid (Year): ', min_value=1, max_value=10, value=2, key=2)
+
+	startMACD = dt.datetime.today()-dt.timedelta(numYearMACD * 365)
+	endMACD = dt.datetime.today()
+	dataMACD = yf.download(ticker, startMACD, endMACD)
+	df_macd = calc_macd(dataMACD)
+	df_macd = df_macd.reset_index()
+
+	figMACD = make_subplots(rows=2, cols=1, shared_xaxes=True, vertical_spacing=0.01)
+
+	# Charting
+	figMACD.add_trace(
+		go.Scatter(
+			x = df_macd['Date'],
+			y = df_macd['Adj Close'],
+			name = "Prices Over Last " + str(numYearMACD) + " Year(s)"
+			),
+		row=1, col=1
+		)
+
+	figMACD.add_trace(
+		go.Scatter(
+			x = df_macd['Date'],
+			y = df_macd['ema12'],
+			name = "EMA 12 Over Last " + str(numYearMACD) + "Year(s)"
+			),
+		row=1, col=1
+		)
+
+	figMACD.add_trace(
+		go.Scatter(
+			x = df_macd['Date'],
+			y = df_macd['ema26'],
+			name = "EMA 26 Over Last " + str(numYearMACD) + "Year(s)"
+			),
+		row=1, col=1
+		)
+
+	figMACD.add_trace(
+		go.Scatter(
+			x = df_macd['Date'],
+			y = df_macd['macd'],
+			name = "MACD line"
+			),
+		row=2, col=1
+		)
+
+	figMACD.add_trace(
+		go.Scatter(
+			x = df_macd['Date'],
+			y = df_macd['signal'],
+			name = "Signal Line"
+			),
+		row=2, col=1
+		)
+	
+	figMACD.update_layout(legend=dict(
+		orientation="h",
+		yanchor="bottom",
+		y=1,
+		xanchor="left",
+		x=0
+		))
+
+	figMACD.update_yaxes(tickprefix="$")
+	st.plotly_chart(figMACD, use_container_width=True)
+
+
+
+
+
+
+
+
+
+
+
+
