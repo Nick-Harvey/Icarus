@@ -10,7 +10,6 @@ from Chance.chance import Horseshoe as hs
 snp500 = pd.read_csv("core/s-and-p-500-companies-financials/data/constituents_csv.csv")
 symbols = snp500['Symbol'].sort_values().tolist()
 
-
 ## Create the Dropdown menu
 ticker = st.sidebar.selectbox(
 	'Choose a S&P 500 Stock',
@@ -23,18 +22,12 @@ infoType = st.sidebar.radio(
 
 	)
 
-# gamble = st.sidebar.button(
-# 	"Magic 8-ball",
-# 	st.info(hs.eightball())
-# 	)
 
 if st.sidebar.button("Magic 8-ball"):
 	st.info(hs.eightball())
 	st.balloons()
 else:
 	pass
-
-
 
 # Display company information
 if(infoType == 'Fundamental'):
