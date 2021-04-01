@@ -5,5 +5,5 @@ streamlit==0.78.0
 pyarrow==3.0.0
 Pillow ==8.1.2
 pyzmq==22.0.3
-yfinance==0.1.55
+yfinance>=0.1.55
 alpha-vantage==2.3.1
