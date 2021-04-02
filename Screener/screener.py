@@ -7,7 +7,7 @@ from plotly.subplots import make_subplots
 
 from Chance.chance import Horseshoe as hs
 
-snp500 = pd.read_csv("core/s-and-p-500-companies-financials/data/constituents_csv.csv")
+snp500 = pd.read_csv("gs://icarus_dev/core/constituents_csv.csv")
 symbols = snp500['Symbol'].sort_values().tolist()
 
 ## Create the Dropdown menu
