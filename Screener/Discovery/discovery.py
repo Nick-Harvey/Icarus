@@ -4,13 +4,13 @@ import os
 
 
 class Discovery():
-    def alphav_sectors(l_args):
+    def alphav_sectors():
         """
         Return AlphaVantage Sectors
         """
 
-        sector_perf = SectorPerformances(
-            key=os.getenv("GT_API_KEY_ALPHAVANTAGE"), output_format="pandas"
+        sp = SectorPerformances(
+            key=os.getenv("API_KEY_ALPHAVANTAGE"), output_format="pandas"
         )
         data, meta_data = sp.get_sector()
         data['Rank A: Real-Time Performance'].plot(kind='bar')

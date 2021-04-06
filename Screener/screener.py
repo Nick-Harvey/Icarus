@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 from Chance.chance import Horseshoe as hs
+from Discovery.discovery import Discovery as disco
 
 snp500 = pd.read_csv("https://storage.googleapis.com/icarus_dev/core/constituents_csv.csv")
 symbols = snp500['Symbol'].sort_values().tolist()
@@ -26,6 +27,11 @@ infoType = st.sidebar.radio(
 if st.sidebar.button("Magic 8-ball"):
 	st.info(hs.eightball())
 	st.balloons()
+else:
+	pass
+
+if st.sidebar.button("Show RT Sector Performance"):
+	st.info(disco.alphav_sectors())
 else:
 	pass
 
