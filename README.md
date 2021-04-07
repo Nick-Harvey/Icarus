@@ -13,3 +13,9 @@ or
 `source venv/bin/activate`
 `pip install -r requirements.txt`
 `streamlit run screener.py`
+
+
+
+## API's
+* alphavantage.co
+

@@ -3,6 +3,7 @@ import yfinance as yf
 import streamlit as st
 import datetime as dt
 import plotly.graph_objects as go
+import plotly.express as px
 from plotly.subplots import make_subplots
 
 from Chance.chance import Horseshoe as hs
@@ -23,7 +24,6 @@ infoType = st.sidebar.radio(
 
 	)
 
-
 if st.sidebar.button("Magic 8-ball"):
 	st.info(hs.eightball())
 	st.balloons()
@@ -31,7 +31,8 @@ else:
 	pass
 
 if st.sidebar.button("Show RT Sector Performance"):
-	st.info(disco.alphav_sectors())
+	st.plotly_chart(disco.alphav_sectors())
+	#st.pyplot(fig=disco.alphav_sectors())
 else:
 	pass
 
