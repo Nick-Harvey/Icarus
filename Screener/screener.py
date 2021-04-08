@@ -30,7 +30,7 @@ if st.sidebar.button("Magic 8-ball"):
 else:
 	pass
 
-if st.sidebar.button("Show RT Sector Performance"):
+if st.sidebar.button("Show 1-Day Sector Performance"):
 	st.plotly_chart(disco.alphav_sectors())
 	#st.pyplot(fig=disco.alphav_sectors())
 else:

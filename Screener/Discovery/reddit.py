@@ -5,7 +5,7 @@ from alpha_vantage.sectorperformance import SectorPerformances
 import os
 
 
-class Discovery():
+class Reddit():
     def alphav_sectors():
         """
         Return AlphaVantage Sectors
@@ -19,5 +19,5 @@ class Discovery():
         # plt.title('Real Time Performance (%) per Sector')
         # plt.tight_layout()
         # plt.grid()
-        fig = px.bar(data['Rank B: Day Performance'])
+        fig = px.bar(data['Rank B: 1 Day Performance'])
         return fig
